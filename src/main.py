@@ -17,7 +17,7 @@ def main():
             move = get_best_move_alpha_beta(board, depth=5)
         else:
             print("Monte Carlo (Black) is thinking...")
-            move = monte_carlo(board, simulations=15)
+            move = monte_carlo(board, simulations=15, depth=25)
         board.push(move)
     print("Final Board:")
     print(board)

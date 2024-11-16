@@ -45,33 +45,30 @@ def get_best_move_alpha_beta(board, depth):
             best_move = move
     return best_move
 
-def monte_carlo(board, simulations):
+def monte_carlo(board, simulations, depth):
     move_scores = {}
     legal_moves = list(board.legal_moves)
+    player_turn = board.turn
+
     for move in legal_moves:
-        move_scores[move] = 0
-    for move in legal_moves:
+        total_score = 0
         for _ in range(simulations):
             board.push(move)
-            result = simulate_random_game(board)
+            score = simulate_random_game(board, depth)
             board.pop()
-            if result == 1:
-                move_scores[move] += 1
-            elif result == 0:
-                move_scores[move] += 0.5
+            total_score += score * (1 if player_turn == chess.WHITE else -1)
+        average_score = total_score / simulations
+        move_scores[move] = average_score
+
     best_move = max(move_scores, key=move_scores.get)
     return best_move
 
-def simulate_random_game(board):
+def simulate_random_game(board, depth):
     temp_board = board.copy()
-    while not temp_board.is_game_over():
+    for _ in range(depth):
+        if temp_board.is_game_over():
+            break
         moves = list(temp_board.legal_moves)
         move = random.choice(moves)
         temp_board.push(move)
-    result = temp_board.result()
-    if result == '1-0':
-        return 1 if board.turn == chess.WHITE else -1
-    elif result == '0-1':
-        return -1 if board.turn == chess.WHITE else 1
-    else:
-        return 0
+    return evaluate_board(temp_board)
