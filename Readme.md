@@ -169,8 +169,7 @@ MCTS operates through four main phases in each iteration of the search:
   
 This project integrates the Lc0 engine to evaluate chess positions for the MCTS player. Lc0 (Leela Chess Zero) is a neural-network-based engine that provides strong evaluations:  
   
-- **Official Lc0 Website:** [[https://lczero.org/](https://lczero.org/)](https://lczero.org/)  
-- **Download Lc0 Binaries and Weights:** [[https://github.com/LeelaChessZero/lc0/releases](https://github.com/LeelaChessZero/lc0/releases)](https://github.com/LeelaChessZero/lc0/releases)  
+- [**Official Lc0 Website:**](https://lczero.org/)  
   
 To run the project, ensure that you have a functioning Lc0 engine and a weights file on your local machine.  
   
@@ -178,12 +177,16 @@ To run the project, ensure that you have a functioning Lc0 engine and a weights 
   
 ChessAI/  
 │  
-├─ [main.py](https://web.telegram.org/a/main.py)  
-├─ monte_carlo.py  
-├─ [algorithms.py](https://web.telegram.org/a/algorithms.py)  
-├─ state_eval.py  
-├─ lc0_eval.py  
-└─ requirements.txt  
+├─ src/
+│   ├─ main.py
+│   ├─ monte_carlo.py
+│   ├─ algorithms.py
+│   ├─ state_eval.py
+│   └─ lc0_eval.py  
+├─ .env_template
+├─ README.md
+├─ requirements.txt  
+└─ .gitignore
     
 ## Example `.env` File  
   
@@ -212,7 +215,7 @@ pip install -r requirements.txt
 Ensure `.env ` is correctly filled out with the paths to your Lc0 executable, weights file, and desired save directory.  
 2. Run the Script:  
   
-python [main.py](https://web.telegram.org/a/main.py)  
+python main.py
   
   
   
