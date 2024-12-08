@@ -135,7 +135,7 @@ MCTS operates through four main phases in each iteration of the search:
 1. **Selection:**  
 - **Objective:** Traverse the tree from the root to a leaf node using a policy that balances exploration and exploitation.  
 - **Process:** At each node, select the child with the highest UCB1 score or based on weighted Lc0 evaluations.  
-- **Integration with Lc0:** During selection, moves are prioritized using a combination of Lc0 scores and UCB1 values, with 0.5 weights for each evaluation  
+- **Integration with Lc0:** During selection, moves are prioritized using a combination of Lc0 scores and UCB1 values, with 0.6 weight for Lc0 evaluation and 0.4 for UCB1 evaluation 
   
 2. **Expansion:**  
 - **Objective:** Expand the tree by adding one or more child nodes representing possible moves from the selected leaf node.  
